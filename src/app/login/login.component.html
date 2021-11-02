@@ -1,0 +1,43 @@
+<div>
+    <h2>Login Page</h2>
+    <form #loginR="ngForm">
+    <table>
+        <tr>
+            <th>
+                <label>User email</label>
+            </th>
+            <th>
+                <input type="text" name="userEmail" ngModel value="Enter Email" #userEmRef="ngModel" minlength="2"/>
+                <br>
+                <div *ngIf="userEmRef.errors && (userEmRef.dirty||userEmRef.touched) ">
+                    <span [hidden]="!userEmRef.errors.required" style="color: salmon;">UserEmail is required</span>
+                    <span [hidden]="!userEmRef.errors.minlength" style="color: salmon;">Min length must be 2</span>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label>User Password</label>
+            </th>
+            <th>
+                <input type="password"  name="userPass" value="Enter Password" ngModel #userPsRef="ngModel" minlength="3"/>
+                <div *ngIf="userPsRef.errors && (userPsRef.dirty||userPsRef.touched) ">
+                    <span [hidden]="!userPsRef.errors.required" style="color: salmon;">Password is required</span>
+                    <span [hidden]="!userPsRef.errors.minlength" style="color: salmon;">Min length must be 3</span>
+                </div>
+           
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="button" value="login" >
+            </th>
+            <th>
+                <input type="button" value="register" >
+            </th>
+        </tr>
+    </table>
+    </form>
+    <span style="color: salmon;">    {{msg}}</span>
+
+</div>
