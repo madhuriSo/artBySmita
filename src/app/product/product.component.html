@@ -1,7 +1,47 @@
+<!--<h1>Create Profile</h1>
+<hr />
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div>
+    <input formControlName="name" type="text" placeholder="Enter name..." />
+  </div>
+  <div>
+    <input (change)="onFileSelect($event)" type="file"/>
+  </div>
+  <div *ngIf="imageData">
+    <img [src]="imageData" [alt]="form.value.name" />
+  </div>
+  <div>
+    <button type="submit">Create profile</button>
+  </div>
+</form>
+
+
+--   Adding changes ..............-->
+
+
+<h2>Add Product</h2>
+<form #productRef="ngForm" (ngSubmit)="addProduct(productRef,imageReference)">
+<div class="form-group" >
+    <label> Product Name</label>
+    <input type="text" name="name"  ngModel required id="">
+    <label for="">Product price</label>
+    <input type="text" name="price"  ngModel required id=""><br>
+
+    <label for="">Product Details</label>
+    <input type="text" name="details" ngModel required id=""><br>
+    <label>Select image</label>
+    <input type="file"  #imageReference  name="pImg"  ><br>
+    <button type="submit">Add Product</button>
+</div>
+</form>q
+
 <h2>Product Details</h2>
+
+
 <div *ngFor="let p of products; let i=index">
     <img src={{p.url}} alt="" width="150" height="150"/>
     <p>{{i+1}}{{p.name}}{{p.price}}{{p.description}}</p>
 
+    <input type="button" value="Delete product" />
 
 </div>

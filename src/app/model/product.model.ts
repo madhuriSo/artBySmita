@@ -5,3 +5,10 @@ export class Product{
         
     }
 }
+export class ProductU{
+ 
+    constructor(public name:string,
+        public price:number,public description:string,public image:File){
+        
+    }
+}
