@@ -121,7 +121,10 @@ export class ProductComponent implements OnInit {
     this.pService.addProdImage(productForm.value.name,file);
  
 
+
   }
+
+  deleteProduct(){}
 
 
   
