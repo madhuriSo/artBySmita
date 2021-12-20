@@ -40,7 +40,8 @@
 
 <div *ngFor="let p of products; let i=index">
     <img src={{p.url}} alt="" width="150" height="150"/>
-    <p>{{i+1}} <label style="color:rgb(92, 194, 241); font-size: xx-large;">{{p.name}} </label> 
+    <p>{{i+1}} 
+        <label style="color:rgb(92, 194, 241); font-size: xx-large;">{{p.name}} </label> 
         <label style="color: rgb(0, 255, 21);">  price : {{p.price}} Rs</label> 
         <label style="color: palevioletred;"> Description: {{p.description}}</label>
         <input type="button"  value="Delete product" (click)="deleteProduct()" />

@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
 
   products:Array<Product>=[];
   productsDb:Array<Product>=[];
+  prodDb:Array<Product>=[];
   /*form!: FormGroup;
   profile!: Profile;
   imageData!: string;
@@ -31,10 +32,17 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.products.push(new Product(100,"Apple",250,"Healthy cotains vitamins","http://localhost:3000/images/prod.jpg"));
     this.products.push(new Product(200,"Tulsi",12,"Good for cough and cold","http://localhost:3000/images/wew.jpg"))
-    this.pService.loadProuctInfo().subscribe(result=> {
+    /*this.pService.loadProuctInfo().subscribe(result=> {
       this.productsDb=result;
 
-    })
+    })*/
+
+    this.pService.getProducts();
+    this.productsDb=this.pService.getProductsAvailable();
+
+    
+
+    console.log(this.productsDb[0]);
     /*
     this.form = new FormGroup({
       name: new FormControl(null),
