@@ -36,7 +36,7 @@
 </form>
 
 <h2>Available Products </h2>
-
+<input type="button"  value="View product" (click)="viewProducts()" />     
 
 <div *ngFor="let p of products; let i=index">
     <img src={{p.url}} alt="" width="150" height="150"/>

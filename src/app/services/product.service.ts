@@ -22,11 +22,9 @@ export class ProductService {
   readonly prodUrl="http://localhost:3000/api/profiles/products";
   constructor(public http:HttpClient) { }
 
-  /*loadProuctInfo(): Observable<Product[]> {
-    return this.http.get<Product[]>("http://localhost:9090/api/product/getProductInfo");
-   db.products.insert({_id:400,name:"Orange",price:50,description:"Contains vitamin C",url:"https://media.gettyimages.com/photos/orange-picture-id185284489?k=20&m=185284489&s=612x612&w=0&h=LLY2os0YTG2uAzpBKpQZOAC4DGiXBt1jJrltErTJTKI="});
-  
-  }*/
+loadProuctInfo(): Observable<Product[]> {
+    return this.http.get<Product[]>("http://localhost:3000/api/profiles/products");
+  }
 
   getProductsAvailable():Product[]{
     return this.products;
@@ -36,10 +34,10 @@ export class ProductService {
 
     this.http.get<{products:Product[]}>(this.prodUrl)
     .pipe(
-      map((profileData) => {
-        console.log(profileData);
-        console.log(profileData.products);
-        return profileData.products;
+      map((fileData) => {
+        console.log(fileData); //Data available here
+        console.log(fileData.products); // Need to get from here to component
+        return fileData.products;
       })
     )
     .subscribe((products) => {
@@ -65,8 +63,6 @@ export class ProductService {
   getProfilesStream() {
     return this.proImages$.asObservable();
   }
-
-
 
   addProdImage(name: string, image: File): void {
     const profileData = new FormData();
