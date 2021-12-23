@@ -35,7 +35,7 @@
 </div>
 </form>
 
-<h2>Available Products </h2>
+<h2 (onload)="viewProducts()">Available Products  </h2>
 <input type="button"  value="View product" (click)="viewProducts()" />     
 
 <div *ngFor="let p of products; let i=index">

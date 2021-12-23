@@ -31,7 +31,6 @@ loadProuctInfo(): Observable<Product[]> {
   }
 
   getProducts(){
-
     this.http.get<{products:Product[]}>(this.prodUrl)
     .pipe(
       map((fileData) => {

@@ -23,8 +23,8 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products.push(new Product(100,"Apple",250,"Healthy cotains vitamins","http://localhost:3000/images/prod.jpg"));
-    this.products.push(new Product(200,"Tulsi",12,"Good for cough and cold","http://localhost:3000/images/wew.jpg"))
+    //this.products.push(new Product(100,"Apple",250,"Healthy cotains vitamins","http://localhost:3000/images/prod.jpg"));
+    //this.products.push(new Product(200,"Tulsi",12,"Good for cough and cold","http://localhost:3000/images/wew.jpg"))
     this.pService.loadProuctInfo().subscribe(result=> {
 
       this.prodDb=result;
@@ -41,6 +41,7 @@ export class ProductComponent implements OnInit {
   addProduct(productForm:NgForm,imageInput:any){
   
     const file: File = imageInput.files[0];
+    console.log("addProduct"+productForm.value.name);
     this.pService.addProdImage(productForm.value.name,file);
  
   }
