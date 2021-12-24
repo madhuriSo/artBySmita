@@ -30,6 +30,7 @@ loadProuctInfo(): Observable<Product[]> {
     return this.products;
   }
 
+
   getProducts(){
     this.http.get<{products:Product[]}>(this.prodUrl)
     .pipe(
@@ -63,6 +64,14 @@ loadProuctInfo(): Observable<Product[]> {
     return this.proImages$.asObservable();
   }
 
+  addProduct(name:string,price:string,description:string):void{
+      const productData=new FormData();
+      productData.append("name",name);
+      productData.append("price",price);
+      productData.append("description",description);
+      
+  }
+
   addProdImage(name: string, image: File): void {
     const profileData = new FormData();
     var blob = new Blob([image], { type: "image/jpg"});
@@ -81,5 +90,10 @@ loadProuctInfo(): Observable<Product[]> {
         this.proImages.push(prodImg);
         this.proImages$.next(this.proImages);
       });
+      /**  _id:{type:Number,required:true},
+  name: { type: String, required: true },
+  price:{ type:Number,required:true},
+  description:{type:String,required:true},
+  url: { type: String, required: true }, */
   }
 }
