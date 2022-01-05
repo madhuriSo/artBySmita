@@ -23,14 +23,12 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.products.push(new Product(100,"Apple",250,"Healthy cotains vitamins","http://localhost:3000/images/prod.jpg"));
-    //this.products.push(new Product(200,"Tulsi",12,"Good for cough and cold","http://localhost:3000/images/wew.jpg"))
     this.pService.loadProuctInfo().subscribe(result=> {
-
-      this.prodDb=result;
-      console.log("result :" +this.prodDb );
-
+    this.prodDb=result;
+    },()=>{},()=>{
+      this.products=this.prodDb;
     });
+
   }
 
     viewProducts(){
@@ -43,14 +41,12 @@ export class ProductComponent implements OnInit {
     const file: File = imageInput.files[0];
     console.log("addProduct"+productForm.value.name);
     this.pService.addProdImage(productForm.value.name,file);
+    this.pService.addProduct(productForm.value.name,
+                              productForm.value.price,
+                              productForm.value.details);
  
   }
 
   deleteProduct(){}
-
-
-  
-
-
 
 }
