@@ -1,24 +1,5 @@
-<!--<h1>Create Profile</h1>
-<hr />
-<form [formGroup]="form" (submit)="onSubmit()">
-  <div>
-    <input formControlName="name" type="text" placeholder="Enter name..." />
-  </div>
-  <div>
-    <input (change)="onFileSelect($event)" type="file"/>
-  </div>
-  <div *ngIf="imageData">
-    <img [src]="imageData" [alt]="form.value.name" />
-  </div>
-  <div>
-    <button type="submit">Create profile</button>
-  </div>
-</form>
 
-
---   Adding changes ..............-->
-
-
+<div class="div-hide" >
 <h2>Add Product</h2>
 <form #productRef="ngForm" (ngSubmit)="addProduct(productRef,imageReference)">
 <div class="form-group" >
@@ -34,10 +15,8 @@
     <button type="submit">Add Product</button>
 </div>
 </form>
-
+</div>
 <h2 (onload)="viewProducts()">Available Products  </h2>
-<input type="button"  value="View product" (click)="viewProducts()" />     
-
 <div *ngFor="let p of products; let i=index">
     <img src={{p.url}} alt="" width="150" height="150"/>
     <p>{{i+1}} 

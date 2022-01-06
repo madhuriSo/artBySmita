@@ -19,15 +19,17 @@ export class ProductComponent implements OnInit {
   productsDb:Array<Product>=[];
   prodDb:Array<Product>=[];
   constructor(public pService:ProductService) { 
-
   }
 
   ngOnInit(): void {
     this.pService.loadProuctInfo().subscribe(result=> {
     this.prodDb=result;
-    },()=>{},()=>{
+    },
+    ()=>{},
+    ()=>{
       this.products=this.prodDb;
-    });
+    }
+    );
 
   }
 

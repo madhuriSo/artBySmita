@@ -3,3 +3,8 @@
     font-size: large;
     color: blue;
 }
+
+div.div-hide{
+    visibility: visible;
+    float: right;
+}
