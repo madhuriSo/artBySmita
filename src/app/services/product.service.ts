@@ -6,6 +6,7 @@ import { Product } from '../model/product.model';
 import { Subject } from "rxjs";
 import { ProdImage } from '../model/profile.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,13 +18,13 @@ export class ProductService {
   private products:Product[]=[];
   private products$=new Subject<Product[]>();
 
-  readonly url = "http://localhost:3000/api/profiles";
+  readonly url = "http://localhost:3000/api";
 
-  readonly prodUrl="http://localhost:3000/api/profiles/products";
+  readonly productUrl="http://localhost:3000/api/products";
   constructor(public http:HttpClient) { }
 
 loadProuctInfo(): Observable<Product[]> {
-    return this.http.get<Product[]>("http://localhost:3000/api/profiles/products");
+    return this.http.get<Product[]>("http://localhost:3000/api/products");
   }
 
   getProductsAvailable():Product[]{
@@ -32,7 +33,7 @@ loadProuctInfo(): Observable<Product[]> {
 
 
   getProducts(){
-    this.http.get<{products:Product[]}>(this.prodUrl)
+    this.http.get<{products:Product[]}>(this.productUrl)
     .pipe(
       map((fileData) => {
         console.log(fileData); //Data available here
@@ -69,6 +70,17 @@ loadProuctInfo(): Observable<Product[]> {
       productData.append("name",name);
       productData.append("price",price);
       productData.append("description",description);
+      console.log("Productservice :"+productData);
+      this.http.post<{prod:Product}>(this.productUrl,productData)
+      .subscribe((productData)=>{
+          const prod:Product={
+            _id:122,
+            name:name,
+            price:12,
+            description:description,
+            url:""};
+            this.products.push(prod);  
+      });
       
   }
 
@@ -90,10 +102,6 @@ loadProuctInfo(): Observable<Product[]> {
         this.proImages.push(prodImg);
         this.proImages$.next(this.proImages);
       });
-      /**  _id:{type:Number,required:true},
-  name: { type: String, required: true },
-  price:{ type:Number,required:true},
-  description:{type:String,required:true},
-  url: { type: String, required: true }, */
+  
   }
 }

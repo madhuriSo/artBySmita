@@ -10,3 +10,5 @@ export interface ProdImage {
     name: string;
     imagePath: string;
   }
+
+   
