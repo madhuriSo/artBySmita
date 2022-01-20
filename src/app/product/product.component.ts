@@ -45,7 +45,9 @@ export class ProductComponent implements OnInit {
     this.pService.addProdImage(productForm.value.name,file);
     this.pService.addProduct(productForm.value.name,
                               productForm.value.price,
-                              productForm.value.details);
+                              productForm.value.details).subscribe((resp)=>{
+                                console.log("addProduct-subscribe : "+JSON.stringify(resp) );
+                              });
  
   }
 

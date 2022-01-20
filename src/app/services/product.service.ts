@@ -65,22 +65,16 @@ loadProuctInfo(): Observable<Product[]> {
     return this.proImages$.asObservable();
   }
 
-  addProduct(name:string,price:string,description:string):void{
+  addProduct(name:string,price:string,description:string):Observable<any>{
       const productData=new FormData();
       productData.append("name",name);
       productData.append("price",price);
       productData.append("description",description);
       console.log("Productservice :"+productData);
-      this.http.post<{prod:Product}>(this.productUrl,productData)
-      .subscribe((productData)=>{
-          const prod:Product={
-            _id:122,
-            name:name,
-            price:12,
-            description:description,
-            url:""};
-            this.products.push(prod);  
-      });
+      return this.http.post<{prod:Product}>(this.productUrl,productData)
+      ;
+
+     
       
   }
 
