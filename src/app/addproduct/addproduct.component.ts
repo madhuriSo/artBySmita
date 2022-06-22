@@ -1,45 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Product,ProductU } from '../model/product.model';
+import { NgForm } from '@angular/forms';
+import { Product } from '../model/product.model';
 import { ProductService } from '../services/product.service';
-import { Profile } from '../model/profile.model';
-import {  FormGroup, FormControl, NgForm, NgModel } from "@angular/forms";
-
-
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-addproduct',
+  templateUrl: './addproduct.component.html',
+  styleUrls: ['./addproduct.component.css']
 })
-export class ProductComponent implements OnInit {
+export class AddproductComponent implements OnInit {
 
-  products:Array<Product>=[];
-  productsDb:Array<Product>=[];
-  prodDb:Array<Product>=[];
   constructor(public pService:ProductService) { 
   }
-
   ngOnInit(): void {
-    this.pService.loadProuctInfo().subscribe(result=> {
-    this.prodDb=result;
-    },
-    ()=>{},
-    ()=>{
-      this.products=this.prodDb;
-    }
-    );
-
   }
 
-    viewProducts(){
-      this.products=this.prodDb;
-      
-    }
-
-   addProduct(productForm:NgForm,imageInput:any){
+  addProduct(productForm:NgForm,imageInput:any){
     //TODO Get product ID then call add product image ASYC
     var createdProduct:Product=new Product("1","test",23,"test","URL");
     const file: File = imageInput.files[0];
@@ -55,15 +31,6 @@ export class ProductComponent implements OnInit {
                               }); 
                               
 
-    
-   
-  }
 
-  deleteProduct(prod:Product){
-    console.log("Given product to delete "+prod.name+" ----ID----"+prod._id);
-
-    this.pService.deleteProduct(prod._id);
-
-  }
-
+}
 }

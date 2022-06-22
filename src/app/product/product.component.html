@@ -1,30 +1,17 @@
-
-<div class="div-hide" >
-<h2>Add Product</h2>
-<form #productRef="ngForm" (ngSubmit)="addProduct(productRef,imageReference)">
-<div class="form-group" >
-    <label> Product Name</label>
-    <input type="text" name="name"  ngModel required id="">
-    <label for="">Product price</label>
-    <input type="text" name="price"  ngModel required id=""><br>
-
-    <label for="">Product Details</label>
-    <input type="text" name="details" ngModel required id=""><br>
-    <label>Select image</label>
-    <input type="file"  #imageReference  name="pImg"  ><br>
-    <button type="submit">Add Product</button>
-</div>
-</form>
-</div>
 <h2 (onload)="viewProducts()">Available Products  </h2>
-<div *ngFor="let p of products; let i=index">
+<div class="grid-container">
+<div  *ngFor="let p of products; let i=index">
+    <div >
     <img src={{p.url}} alt="" width="150" height="150"/>
+    <div>
     <p>{{i+1}} 
         <label style="color:rgb(92, 194, 241); font-size: xx-large;">{{p.name}} </label> 
         <label style="color: rgb(0, 255, 21);">  Rs : {{p.price}} </label> <br>
         <label style="color: palevioletred;">  {{p.description}}</label>
-        <input class="del-btn" type="button"  value="Delete product" (click)="deleteProduct()" />
+        <input class="del-btn" type="button"  value="Delete product"  />
     </p>
-       
+    </div>
+    </div>   
 
+</div>
 </div>
